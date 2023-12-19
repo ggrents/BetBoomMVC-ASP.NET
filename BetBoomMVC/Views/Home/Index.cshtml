@@ -1,8 +1,76 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewBag.Title = "Главная страница";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .container2 {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .main-content {
+        flex-grow: 1;
+        padding: 20px;
+    }
+
+    .sidebar {
+        width: 2500px;
+        padding: 20px;
+        border: 1px solid #ddd; 
+        text-align: center;
+    }
+
+    .nav-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .nav-item {
+        padding: 10px 0;
+    }
+
+    .nav-link2 {
+        text-decoration: none;
+        color: #FFD700;
+        font-weight: bold;
+    }
+
+        .nav-link2:hover {
+            color: #ff5733; 
+        }
+
+    .image-container {
+        margin-top : 50px;
+        margin-right : 50px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .image-container img {
+            max-width: 48%; /* Максимальная ширина каждой картинки */
+            margin-bottom: 20px;
+        }
+
+</style>
+
+<div class="container2">
+    <div class="main-content">
+   
+        <h1>Добро пожаловать на сайт BetBoom.KZ – официальный сайт букмекера в Казахстане</h1>
+        <div class="image-container">
+            <img src="images/index1.jpg" alt="Первая картинка">
+            <img src="images/index2.jpeg" alt="Вторая картинка">
+        </div>
+
+    </div>
+
+    <div class="sidebar">
+        <h2>Виды спорта</h2>
+        <ul class="nav-list">
+            <li class="nav-item"><a class="nav-link2" href="#">Хоккей</a></li>
+            <li class="nav-item"><a class="nav-link2" href="#">Футбол</a></li>
+            <li class="nav-item"><a class="nav-link2" href="#">Баскетбол</a></li>
+            
+        </ul>
+    </div>
 </div>

@@ -2,48 +2,141 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BetBoomMVC</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BetBoomMVC.styles.css" asp-append-version="true" />
+    <title> BetBoom - Букмекерская контора</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #000000;
+            color: #FFFFFF;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .nav-link {
+            font-size: 23px;
+        }
+
+        .nav-link:hover {
+            color: #ff5733; /* цвет при наведении на элемент */
+        }
+
+        header img {
+            max-height: 330px;
+        }
+
+        nav {
+            background-color: #000000;
+            color: #FFFFFF;
+            padding: 10px;
+            text-align: center;
+        }
+
+            nav a {
+                color: #FFFFFF;
+                text-decoration: none;
+                padding: 10px;
+                margin: 0 10px;
+                transition: background-color 0.3s;
+            }
+
+                nav a:hover {
+                    background-color: #333333;
+                }
+
+        footer {
+            background-color: #000000;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .content-container {
+            background-color: #000000;
+            padding: 20px;
+        }
+
+        .footer-text {
+            padding-top: 20px;
+            padding-left: 500px;
+            font-size: 25px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-item {
+            margin: 0 15px;
+        }
+
+        .login-register-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .btn-login, .btn-register {
+            color: #FFFFFF;
+            text-decoration: none;
+            border: 1px solid #FFFFFF;
+            padding: 5px 15px;
+            margin-left: 10px;
+            transition: background-color 0.3s;
+        }
+
+            .btn-login:hover, .btn-register:hover {
+                background-color: #333333;
+            }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BetBoomMVC</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+
+    <header class="container">
+        <div class="row align-items-center">
+            <div class="col-md-12 text-center my-auto">
+                <a href="/">
+                    <img src="images/betboom-review.jpg" alt="BetBoom Logo" class="img-fluid" style="width: 250px; height:100px;" />
+                </a>
             </div>
-        </nav>
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <nav class="container nav-container">
+        <ul class="nav">
+            <li class="nav-item"> <a class="nav-link" href="/"> Главная</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#"> Линия</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#"> Результаты</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#"> Акции</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#"> О нас</a> </li>
+        </ul>
+        <div class="login-register-container">
+            <a class="btn btn-login" href="#">Войти</a>
+            <a class="btn btn-register" href="#">Регистрация</a>
+        </div>
+    </nav>
+
+    <div class="container content-container">
+        @RenderBody()
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - BetBoomMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <footer class="container">
+        <div class="footer-text">&copy; 2023 BetBoom. Все права защищены.</div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
