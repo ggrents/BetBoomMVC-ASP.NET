@@ -1,6 +1,4 @@
-﻿@{
-    ViewBag.Title = "Главная страница";
-}
+﻿@model IndexViewModel
 
 <style>
     .container2 {
@@ -11,12 +9,15 @@
     .main-content {
         flex-grow: 1;
         padding: 20px;
+        background-color: #15181C;
+        margin-right : 20px;
     }
 
     .sidebar {
         width: 2500px;
         padding: 20px;
-        border: 1px solid #ddd; 
+       /*  border: 1px solid #ddd;  */
+        background-color: #15181C;
         text-align: center;
     }
 
@@ -63,14 +64,15 @@
         </div>
 
     </div>
-
     <div class="sidebar">
         <h2>Виды спорта</h2>
         <ul class="nav-list">
-            <li class="nav-item"><a class="nav-link2" href="#">Хоккей</a></li>
-            <li class="nav-item"><a class="nav-link2" href="#">Футбол</a></li>
-            <li class="nav-item"><a class="nav-link2" href="#">Баскетбол</a></li>
-            
+            @foreach (var sportType in Model.SportTypes)
+            {
+                <li class="nav-item">
+                    <a class="nav-link2" href="#">@sportType.Name</a>
+                </li>
+            }
         </ul>
     </div>
 </div>

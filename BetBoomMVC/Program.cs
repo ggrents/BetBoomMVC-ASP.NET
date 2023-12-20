@@ -1,3 +1,4 @@
+using BetBoomMVC.Application.Services;
 using BetBoomMVC.Domain;
 
 namespace BetBoomMVC
@@ -10,6 +11,7 @@ namespace BetBoomMVC
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddScoped<ISportTypeService, SportTypeService>();
 
             var app = builder.Build();
 

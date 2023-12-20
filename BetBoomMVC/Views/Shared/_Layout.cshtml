@@ -33,7 +33,7 @@
         }
 
         nav {
-            background-color: #000000;
+            background-color: #15181C;
             color: #FFFFFF;
             padding: 10px;
             text-align: center;
@@ -118,7 +118,7 @@
             <li class="nav-item"> <a class="nav-link" href="/"> Главная</a> </li>
             <li class="nav-item"> <a class="nav-link" href="#"> Линия</a> </li>
             <li class="nav-item"> <a class="nav-link" href="#"> Результаты</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="#"> Акции</a> </li>
+            <li class="nav-item"> @Html.ActionLink("Акции", "Stocks", "Home", null, new { @class = "nav-link" }) </li>
             <li class="nav-item"> <a class="nav-link" href="#"> О нас</a> </li>
         </ul>
         <div class="login-register-container">
