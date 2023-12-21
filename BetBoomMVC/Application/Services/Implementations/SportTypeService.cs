@@ -18,5 +18,11 @@ namespace BetBoomMVC.Application.Services
             var sports = await _db.SportTypes.ToListAsync();
             return sports;
         }
+
+        public async Task<SportType> GetSportTypeByIdAsync(int Id)
+        {
+            var sport = await _db.SportTypes.FirstOrDefaultAsync(l=>l.Id == Id);
+            return sport;
+        }
     }
 }

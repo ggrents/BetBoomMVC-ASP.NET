@@ -1,4 +1,4 @@
-﻿@model SportDetailsViewModel
+﻿@model EventViewModel
 
 
 <style>
@@ -60,12 +60,12 @@
         text-decoration: none;
         color: #FFD700;
         font-weight: bold;
-        font-size : 26px;
+        font-size: 26px;
     }
 
-        .nav-link2:hover {
-            color: #ff5733;
-        }
+    .nav-link2:hover {
+        color: #ff5733;
+    }
 
     .image-container {
         margin-top: 50px;
@@ -89,7 +89,7 @@
                 @foreach (var league in Model.Leagues)
                 {
                     <li class="nav-item">
-                    <a class="nav-link3" href="@Url.Action("Details", "Sport", new { id = league.Id })">@league.Name</a>
+                        <a class="nav-link3" href="@Url.Action("Details", "Sport", new { id = league.Id })">@league.Name</a>
                     </li>
                 }
             </ul>

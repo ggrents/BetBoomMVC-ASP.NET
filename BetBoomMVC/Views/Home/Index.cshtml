@@ -70,7 +70,7 @@
             @foreach (var sportType in Model.SportTypes)
             {
                 <li class="nav-item">
-                    <a class="nav-link2" href="#">@sportType.Name</a>
+                    <a class="nav-link2" href="@Url.Action("Details", "Sport", new { id = sportType.Id })">@sportType.Name</a>
                 </li>
             }
         </ul>
