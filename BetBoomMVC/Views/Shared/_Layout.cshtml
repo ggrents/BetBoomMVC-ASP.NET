@@ -56,9 +56,9 @@
             color: #FFFFFF;
             text-align: center;
             padding: 10px;
-            position: fixed;
-            bottom: 0;
+            position: relative;
             width: 100%;
+            margin-top: auto; /* важно добавить этот стиль для "прилипания" футера к нижней части экрана */
         }
 
         .content-container {
@@ -68,8 +68,10 @@
 
         .footer-text {
             padding-top: 20px;
-            padding-left: 500px;
             font-size: 25px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .nav-container {

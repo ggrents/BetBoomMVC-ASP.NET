@@ -14,16 +14,37 @@ namespace BetBoomMVC.Controllers
             _eventService = eventService;
             _leagueService = leagueService;
         }
-        [Route("Spor/League/{leagueId}/")]
+        
         public async Task<IActionResult> Matches(int leagueId)
         {
-            var events = _eventService.GetEventsByLeagueIdAsync(leagueId);
-            var leagues = _leagueService.GetLeaguesBySportIdAsync
+            var events = await _eventService.GetEventsByLeagueIdAsync(leagueId);
 
+            var leagues = await _leagueService.GetLeaguesByLeagueIdAsync(leagueId);
+
+            var league = await _leagueService.GetLeagueByIdAsync(leagueId);
             var viewModel = new EventViewModel
             {
-                
-            }
+                League = league,
+                Events = events,
+                Leagues = leagues
+            };
+            return View(viewModel);
+        }
+
+        public async Task<IActionResult> Details(int eventId)
+        {
+            //var events = await _eventService.GetEventsByLeagueIdAsync(leagueId);
+
+            //var leagues = await _leagueService.GetLeaguesByLeagueIdAsync(leagueId);
+
+            //var league = await _leagueService.GetLeagueByIdAsync(leagueId);
+            //var viewModel = new EventViewModel
+            //{
+            //    League = league,
+            //    Events = events,
+            //    Leagues = leagues
+            //};
+            //return View(viewModel);
             return View();
         }
     }

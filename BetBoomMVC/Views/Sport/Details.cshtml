@@ -84,12 +84,12 @@
     <div class="main-content">
         <h1 style="text-align: center;">@Model.SportType.Name</h1>
         <div class="image-container">
-            <img src="~/images/hockey.jpg" alt="Первая картинка">
+            <img src="~/images/@Model.SportType.ImagePath" alt="Первая картинка">
             <ul>
                 @foreach (var league in Model.Leagues)
                 {
                     <li class="nav-item">
-                    <a class="nav-link3" href="@Url.Action("Details", "Sport", new { id = league.Id })">@league.Name</a>
+                    <a class="nav-link3" href="@Url.Action("Matches", "Event", new { leagueId = league.Id })">@league.Name</a>
                     </li>
                 }
             </ul>
