@@ -26,6 +26,14 @@ namespace BetBoomMVC.Application.Services.Implementations
             return leagues;
         }
 
+        public async Task<IEnumerable<League>> GetLeaguesByEventIdAsync(int EventId)
+        {
+            var _event = await _db.Events.FirstOrDefaultAsync(l => l.Id == EventId);
+            var league = await _db.Leagues.FirstOrDefaultAsync(l => l.Id == _event.LeagueId);
+            var leagues = await _db.Leagues.Where(l => l.SportTypeId == league.SportTypeId).ToListAsync();
+            return leagues;
+        }
+
         public async Task<IEnumerable<League>> GetLeaguesBySportIdAsync(int SportTypeId)
         {
             var leagues = await _db.Leagues.Where(l=> l.SportTypeId == SportTypeId).ToListAsync();

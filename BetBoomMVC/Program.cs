@@ -16,6 +16,8 @@ namespace BetBoomMVC
             builder.Services.AddScoped<ISportTypeService, SportTypeService>();
             builder.Services.AddScoped<ILeagueService, LeagueService>();
             builder.Services.AddScoped<IEventService, EventService>();
+            builder.Services.AddScoped<IOutcomeService, OutcomeService>();
+            builder.Services.AddScoped<IBetService, BetService>();
 
             var app = builder.Build();
 

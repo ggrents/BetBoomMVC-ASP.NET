@@ -87,11 +87,14 @@
         <ul>
             @foreach (var ev in Model.Events)
             {
-                <li class="nav-item">
-                    
+                @if (!ev.IsFinished)
+                {
+                    <li class="nav-item">
+
                     <span style="color: #ff5733;">@ev.Schedule.ToString("dd.MM.yyyy HH:mm")</span><br>
                     <a class="nav-link3" href="@Url.Action("Details", "Event", new { eventId = ev.Id })">@ev.Name</a>
                 </li>
+                }
             }
         </ul>
     </div>

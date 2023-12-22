@@ -24,13 +24,13 @@
 
     ul {
         list-style: none;
-        text-align: right;
+        text-align: center;
         margin: 0;
         padding: 0;
     }
 
         ul li {
-            font-size: 16px;
+            font-size: 20px;
             color: #FFD700; /* Изменен цвет текста */
         }
 
@@ -98,7 +98,7 @@
 
     <div class="sidebar">
         <h2>Виды спорта</h2>
-        <ul class="nav-list">
+        <ul style="text-align : center;" class="nav-list">
             @foreach (var sportType in Model.SportTypes)
             {
                 <li class="nav-item">

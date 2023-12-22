@@ -15,6 +15,7 @@ namespace BetBoomMVC.Domain
 
         public DbSet<Event> Events { get; set; }
         public DbSet<League> Leagues { get; set; }
+        public DbSet<Bet> Bets { get; set; }
         public DbSet<Outcome> Outcomes { get; set; }
         public DbSet<SportType> SportTypes { get; set; }
 

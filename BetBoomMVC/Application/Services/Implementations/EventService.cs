@@ -17,5 +17,11 @@ namespace BetBoomMVC.Application.Services.Implementations
             var events = await _db.Events.Where(l => l.LeagueId == leagueId).ToListAsync();
             return events;
         }
+
+        public async Task<Event> GetEventByIdAsync(int eventId)
+        {
+            var events = await _db.Events.FirstOrDefaultAsync(e=>e.Id == eventId);
+            return events;
+        }
     }
 }
