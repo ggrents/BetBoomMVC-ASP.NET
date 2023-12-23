@@ -2,6 +2,8 @@ using BetBoomMVC.Application.Services;
 using BetBoomMVC.Application.Services.Interfaces;
 using BetBoomMVC.Application.Services.Implementations;
 using BetBoomMVC.Domain;
+using BetBoomMVC.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace BetBoomMVC
 {
@@ -13,6 +15,9 @@ namespace BetBoomMVC
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
             builder.Services.AddScoped<ISportTypeService, SportTypeService>();
             builder.Services.AddScoped<ILeagueService, LeagueService>();
             builder.Services.AddScoped<IEventService, EventService>();

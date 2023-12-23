@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using BetBoomMVC.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace BetBoomMVC.Domain
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppDbContext()
         {
@@ -24,6 +25,8 @@ namespace BetBoomMVC.Domain
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=bbMVC;Trusted_Connection=True;TrustServerCertificate=true;");
         }
+
+     
 
     }
 }

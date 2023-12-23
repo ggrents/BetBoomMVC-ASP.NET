@@ -28,6 +28,7 @@ namespace BetBoomMVC.Controllers
 
         public IActionResult Stocks()
         {
+           
             return View();
         }
 

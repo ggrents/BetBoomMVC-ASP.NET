@@ -18,6 +18,7 @@
             color: #FFFFFF;
             padding: 10px;
             text-align: center;
+            
         }
 
         .nav-link {
@@ -37,6 +38,7 @@
             color: #FFFFFF;
             padding: 10px;
             text-align: center;
+            border: 1px solid #FFFFFF;
         }
 
             nav a {
@@ -123,10 +125,21 @@
             <li class="nav-item"> @Html.ActionLink("Акции", "Stocks", "Home", null, new { @class = "nav-link" }) </li>
             <li class="nav-item"> <a class="nav-link" href="#"> О нас</a> </li>
         </ul>
-        <div class="login-register-container">
-            <a class="btn btn-login" href="#">Войти</a>
-            <a class="btn btn-register" href="#">Регистрация</a>
-        </div>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="login-register-container">
+                <a class="btn btn-profile" href="@Url.Action("Profile", "User")">Профиль</a>
+                <a class="btn btn-logout" href="@Url.Action("Logout", "User")">Выйти</a>
+            </div>
+        }
+        else
+        {
+            <div class="login-register-container">
+                <a class="btn btn-login" href="@Url.Action("Login", "User")">Войти</a>
+                <a class="btn btn-register" href="@Url.Action("Register", "User")">Регистрация</a>
+            </div>
+        }
     </nav>
 
     <div class="container content-container">

@@ -4,6 +4,7 @@ using BetBoomMVC.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BetBoomMVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231223121206_set up user management")]
+    partial class setupusermanagement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,14 +104,9 @@ namespace BetBoomMVC.Migrations
                     b.Property<int>("OutcomeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("OutcomeId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Bets");
                 });
@@ -354,13 +352,7 @@ namespace BetBoomMVC.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BetBoomMVC.Domain.Entities.ApplicationUser", "User")
-                        .WithMany("Bets")
-                        .HasForeignKey("UserId");
-
                     b.Navigation("Outcome");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BetBoomMVC.Domain.Entities.Event", b =>
@@ -445,11 +437,6 @@ namespace BetBoomMVC.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("BetBoomMVC.Domain.Entities.ApplicationUser", b =>
-                {
-                    b.Navigation("Bets");
                 });
 #pragma warning restore 612, 618
         }

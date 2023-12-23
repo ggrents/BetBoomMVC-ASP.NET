@@ -3,6 +3,7 @@ using BetBoomMVC.Domain;
 using BetBoomMVC.Domain.Entities;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BetBoomMVC.Application.Services.Implementations
 {
@@ -14,7 +15,13 @@ namespace BetBoomMVC.Application.Services.Implementations
             _db = db;
         }
 
-        public async Task<bool> MakeBetAsync(int outcomeId, double amount)
+        public async Task<IEnumerable<Bet>> GetBetsByUserAsync(ApplicationUser user)
+        {
+            var bets = await _db.Bets.Where(bets => bets.User == user).Include(b => b.Outcome).ThenInclude(o => o.Event).ToListAsync();
+            return bets;
+        }
+
+        public async Task<bool> MakeBetAsync(int outcomeId, double amount, ApplicationUser user)
         {
             if (outcomeId <= 0 || amount <= 0)
             {
@@ -24,7 +31,8 @@ namespace BetBoomMVC.Application.Services.Implementations
             Bet bet = new Bet
             {
                 OutcomeId = outcomeId,
-                Amount = amount
+                Amount = amount,
+                User = user
             };
 
             await _db.Bets.AddAsync(bet);

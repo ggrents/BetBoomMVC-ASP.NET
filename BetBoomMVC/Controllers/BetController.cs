@@ -2,6 +2,8 @@
 using BetBoomMVC.Application.ViewModels;
 using BetBoomMVC.Application.RequestModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using BetBoomMVC.Domain.Entities;
 
 namespace BetBoomMVC.Controllers
 {
@@ -9,8 +11,10 @@ namespace BetBoomMVC.Controllers
     {
         IOutcomeService _outcomeService;
         IBetService _betService;
-        public BetController(IOutcomeService outcomeService, IBetService betService)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public BetController(IOutcomeService outcomeService, IBetService betService, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _outcomeService = outcomeService;
             _betService = betService;
 
@@ -31,7 +35,15 @@ namespace BetBoomMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddBet(int outcomeId, double amount)
         {
-            var isAdded = await _betService.MakeBetAsync(outcomeId, amount);
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+
+
+            var isAdded = await _betService.MakeBetAsync(outcomeId, amount, user);
             if (!isAdded) {
                 return BadRequest(ModelState);
 
