@@ -1,4 +1,4 @@
-![image](https://github.com/ggrents/BetBoomMVC-ASP.NET/assets/143025643/c905c14e-dd30-4fb4-ac88-c972257fbec3)#BetBoom Betting Company
+# BetBoom Betting Company
 
 <p align="center">
       <img src="https://sun9-9.userapi.com/impg/1q5oFM_r8HevyMAcdu7ycPBHGpVKCA5ch1hSzQ/xi7wZPQS3bw.jpg?size=1548x951&quality=96&sign=fc862134c26b233d74cbe7344f8a27a5&type=album" height = "700" width="1200">
